@@ -1,0 +1,24 @@
+name: workflow-actions
+
+on:
+  jobs:
+    braches:
+        - main:
+
+runs-on: ubuntu-latest
+
+steps:
+  - name: checkout code
+  - uses: checkout@v4
+
+  - name: login to docker
+  - uses: docker/login-action@v3
+
+  with:
+  
+  username: ${{ secrets.DOCKERHUB_USERNAME }}
+  password: ${{ secrets.DOCKERHUB_TOKEN }}
+  
+  - name: docker build
+  - run: docker run build -t ${{ secrets.DOCKERHUB_USERNAME }}/my-test-app:latest .
+
