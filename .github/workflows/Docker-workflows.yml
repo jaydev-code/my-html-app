@@ -2,7 +2,7 @@ name: workflow-actions
 
 on:
   push:
-    braches: main
+    braches: - main
 
 jobs:
 
